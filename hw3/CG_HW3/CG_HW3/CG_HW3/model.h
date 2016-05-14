@@ -82,7 +82,6 @@ class ModelManager{
 
 	private:
 		string path;
-		vector<string> allNameList;
 		vector<string> modelNameList;
 		void traverseModelName(const char *pathName, int depth);
 };

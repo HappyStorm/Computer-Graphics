@@ -591,14 +591,10 @@ void ModelManager::traverseModelName(const char *pathName, int depth)
 			// printf("%*s[%s]\n", depth * 2, "", obj->d_name);
 			this->traverseModelName(path, depth + 1);
 		}
-		else 
-			this->allNameList.push_back(path);
+		else{
+			if (((string)path).find(".mtl") == std::string::npos)
+				this->modelNameList.push_back(path);
+		}
 	}
 	closedir(dir);
-
-	// delete file which is not a.obj file
-	for (int i = 0; i < this->allNameList.size(); ++i){
-		if (this->allNameList[i].find(".mtl") == std::string::npos)
-			this->modelNameList.push_back(this->allNameList[i]);
-	}
 }
