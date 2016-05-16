@@ -32,9 +32,13 @@ void xMove(float value)
 			mm.lightSource[2].position[0] += value * 2;
 			glUniform4fv(iLocLSPosition, 1, mm.lightSource[2].position);
 			break;
-		case SpotEx:
+		case SpotCo:
 			mm.lightSource[2].spotCutoff += value * 10;
 			glUniform1f(iLocLSSpotcutoff, mm.lightSource[2].spotCutoff);
+			break;
+		case SpotEx:
+			mm.lightSource[2].spotExponent += value * 100;
+			glUniform1f(iLocSSpotExponent, mm.lightSource[2].spotExponent);
 			break;
 	}
 }
@@ -42,78 +46,86 @@ void xMove(float value)
 void yMove(float value)
 {
 	switch (mm.controlMode){
-	case Translation:
-		// mm.model->T.translate(0.01, 0, 0);
-		mm.model->ty += (GLfloat)value;
-		break;
-	case Scaling:
-		// mm.model->S.scale(1.01, 1, 1);
-		mm.model->sy += (GLfloat)value;
-		break;
-	case Rotation:
-		// mm.model->R.rotateX(1);
-		mm.model->ry += (GLfloat)value;
-		break;
-	case Eye:
-		mm.model->eyeVec[1] += value;
-		mm.model->centerVec[1] += value;
-		mm.model->upVec[1] += value;
-		break;
-	case Directional:
-		mm.lightSource[0].position[1] += value * 20;
-		glUniform4fv(iLocLDPosition, 1, mm.lightSource[0].position);
-		break;
-	case Point:
-		mm.lightSource[1].position[1] += value * 20;
-		glUniform4fv(iLocLPPosition, 1, mm.lightSource[1].position);
-		break;
-	case Spot:
-		mm.lightSource[2].position[1] += value * 2;
-		glUniform4fv(iLocLSPosition, 1, mm.lightSource[2].position);
-		break;
-	case SpotEx:
-		mm.lightSource[2].spotCutoff += value * 10;
-		glUniform1f(iLocLSSpotcutoff, mm.lightSource[2].spotCutoff);
-		break;
+		case Translation:
+			// mm.model->T.translate(0.01, 0, 0);
+			mm.model->ty += (GLfloat)value;
+			break;
+		case Scaling:
+			// mm.model->S.scale(1.01, 1, 1);
+			mm.model->sy += (GLfloat)value;
+			break;
+		case Rotation:
+			// mm.model->R.rotateX(1);
+			mm.model->ry += (GLfloat)value;
+			break;
+		case Eye:
+			mm.model->eyeVec[1] += value;
+			mm.model->centerVec[1] += value;
+			mm.model->upVec[1] += value;
+			break;
+		case Directional:
+			mm.lightSource[0].position[1] += value * 20;
+			glUniform4fv(iLocLDPosition, 1, mm.lightSource[0].position);
+			break;
+		case Point:
+			mm.lightSource[1].position[1] += value * 20;
+			glUniform4fv(iLocLPPosition, 1, mm.lightSource[1].position);
+			break;
+		case Spot:
+			mm.lightSource[2].position[1] += value * 2;
+			glUniform4fv(iLocLSPosition, 1, mm.lightSource[2].position);
+			break;
+		case SpotCo:
+			mm.lightSource[2].spotCutoff += value * 10;
+			glUniform1f(iLocLSSpotcutoff, mm.lightSource[2].spotCutoff);
+			break;
+		case SpotEx:
+			mm.lightSource[2].spotExponent += value * 100;
+			glUniform1f(iLocSSpotExponent, mm.lightSource[2].spotExponent);
+			break;
 	}
 }
 
 void zMove(float value)
 {
 	switch (mm.controlMode){
-	case Translation:
-		// mm.model->T.translate(0.01, 0, 0);
-		mm.model->tz += (GLfloat)value;
-		break;
-	case Scaling:
-		// mm.model->S.scale(1.01, 1, 1);
-		mm.model->sz += (GLfloat)value;
-		break;
-	case Rotation:
-		// mm.model->R.rotateX(1);
-		mm.model->rz += (GLfloat)value;
-		break;
-	case Eye:
-		mm.model->eyeVec[2] += value;
-		mm.model->centerVec[2] += value;
-		mm.model->upVec[2] += value;
-		break;
-	case Directional:
-		mm.lightSource[0].position[2] += value * 20;
-		glUniform4fv(iLocLDPosition, 1, mm.lightSource[0].position);
-		break;
-	case Point:
-		mm.lightSource[1].position[2] += value * 20;
-		glUniform4fv(iLocLPPosition, 1, mm.lightSource[1].position);
-		break;
-	case Spot:
-		mm.lightSource[2].position[2] += value * 2;
-		glUniform4fv(iLocLSPosition, 1, mm.lightSource[2].position);
-		break;
-	case SpotEx:
-		mm.lightSource[2].spotCutoff += value * 10;
-		glUniform1f(iLocLSSpotcutoff, mm.lightSource[2].spotCutoff);
-		break;
+		case Translation:
+			// mm.model->T.translate(0.01, 0, 0);
+			mm.model->tz += (GLfloat)value;
+			break;
+		case Scaling:
+			// mm.model->S.scale(1.01, 1, 1);
+			mm.model->sz += (GLfloat)value;
+			break;
+		case Rotation:
+			// mm.model->R.rotateX(1);
+			mm.model->rz += (GLfloat)value;
+			break;
+		case Eye:
+			mm.model->eyeVec[2] += value;
+			mm.model->centerVec[2] += value;
+			mm.model->upVec[2] += value;
+			break;
+		case Directional:
+			mm.lightSource[0].position[2] += value * 20;
+			glUniform4fv(iLocLDPosition, 1, mm.lightSource[0].position);
+			break;
+		case Point:
+			mm.lightSource[1].position[2] += value * 20;
+			glUniform4fv(iLocLPPosition, 1, mm.lightSource[1].position);
+			break;
+		case Spot:
+			mm.lightSource[2].position[2] += value * 2;
+			glUniform4fv(iLocLSPosition, 1, mm.lightSource[2].position);
+			break;
+		case SpotCo:
+			mm.lightSource[2].spotCutoff += value * 10;
+			glUniform1f(iLocLSSpotcutoff, mm.lightSource[2].spotCutoff);
+			break;
+		case SpotEx:
+			mm.lightSource[2].spotExponent += value * 100;
+			glUniform1f(iLocSSpotExponent, mm.lightSource[2].spotExponent);
+			break;
 	}
 }
 
@@ -224,6 +236,10 @@ void onKeyboard(unsigned char key, int x, int y)
 			puts("\n\n  ====== Move Spot Light Mode Start ======");
 			break;
 		case '8':
+			mm.controlMode = SpotCo;
+			puts("\n\n  ====== Modify SpotCo Mode Start ======");
+			break;
+		case '9':
 			mm.controlMode = SpotEx;
 			puts("\n\n  ====== Modify SpotEx Mode Start ======");
 			break;

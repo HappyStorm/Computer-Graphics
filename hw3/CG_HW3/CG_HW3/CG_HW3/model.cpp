@@ -87,6 +87,9 @@ void ModelManager::loadOBJModel(int index)
 	this->model = new Model();
 	this->traverseColorModel(this->displayModel);
 
+	//glmFacetNormals(this->displayModel);
+	//glmVertexNormals(this->displayModel, 90.0);
+
 	// set normalization matrix
 	this->setNormalizeMatrix();
 
@@ -132,7 +135,8 @@ void ModelManager::showHelpMenu()
 		 "\n                5                - Start Move Directonal Light Mode"
 		 "\n                6                - Start Move Point Light Mode"
 		 "\n                7                - Start Move Spot Light Mode"
-		 "\n                8                - Start Modify SpotEx Light Mode"
+		 "\n                8                - Start Modify SpotCo Parameter Mode"
+		 "\n                9                - Start Modify SpotEx Parameter Mode"
 		 "\n               Esc               - Exit Program\n");
 }
 
@@ -460,7 +464,7 @@ void::ModelManager::setLightingSource()
 
 	this->lightSource[2].spotDirection[0] = 0;
 	this->lightSource[2].spotDirection[1] = 0;
-	this->lightSource[2].spotDirection[2] = -1;
+	this->lightSource[2].spotDirection[2] = -5;
 	this->lightSource[2].spotDirection[3] = 0;
 
 	this->lightSource[2].spotExponent = 1;

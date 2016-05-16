@@ -44,4 +44,4 @@ extern GLint iLocLType;
 extern GLint eyePos;
 extern GLfloat lightType[4];
 
-enum LightModeControl{Translation, Scaling, Rotation, Eye, Directional, Point, Spot, SpotEx };
+enum LightModeControl{Translation, Scaling, Rotation, Eye, Directional, Point, Spot, SpotEx, SpotCo};
