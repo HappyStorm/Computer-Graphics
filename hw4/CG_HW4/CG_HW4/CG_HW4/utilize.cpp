@@ -180,7 +180,7 @@ void onKeyboard(unsigned char key, int x, int y)
 		case 'T': case 't':
 			mm.toggleTextureMapping();
 			break;
-		case 'R':
+		case 'R': case 'r':
 			mm.rotate = !mm.rotate;
 			break;
 		case 'E': case 'e':
